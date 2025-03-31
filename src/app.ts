@@ -1,9 +1,14 @@
 import express, { Application, NextFunction, Request, Response } from 'express';
 import path from 'path';
+import helmet from 'helmet';
+import { StatusCode } from './constant/statusCodes';
+import { ResponseMessage } from './constant/responseMessage';
+import ApiError from './util/ApiError';
 
 const app: Application = express();
 
 // Middlewares
+app.use(helmet());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.urlencoded({ extended: false }));
@@ -11,9 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 import ApiRouter from './router/api.router';
 import globalErrorHandler from './middleware/globalErrorHandler';
-import { ResponseMessage } from './constant/responseMessage';
-import ApiError from './util/ApiError';
-import { StatusCode } from './constant/statusCodes';
+
 app.use('/api/v1', ApiRouter);
 
 // 404 Error Handler
