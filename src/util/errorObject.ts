@@ -3,6 +3,7 @@ import { HttpError } from '../types/types';
 import { ApplicationEnvironment } from '../constant/application';
 import { ResponseMessage } from '../constant/responseMessage';
 import config from '../config/config';
+import Logger from './Logger';
 
 export default (
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
@@ -32,7 +33,7 @@ export default (
   }
 
   //   Log
-  console.info(`CONTROLLER ERROR`, { meta: errorObj });
+  Logger.info(`CONTROLLER ERROR`, { meta: errorObj });
 
   return errorObj;
 };
