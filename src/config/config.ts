@@ -5,7 +5,7 @@ export default {
   // General
   ENV: process.env.ENV,
   PORT: process.env.PORT,
-  SERVER_URL: process.env.SERVER_URL,
+  SERVER_URL: `${process.env.BASE_URL}:${process.env.PORT}`,
 
   // Database
   DB_NAME: process.env.DB_NAME,
